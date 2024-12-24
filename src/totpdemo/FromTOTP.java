@@ -5,50 +5,29 @@
 package totpdemo;
 
 import javax.swing.JOptionPane;
-import javax.swing.Timer;
 
 /**
  *
  * @author admin
  */
 public class FromTOTP extends javax.swing.JFrame {
-    private String secretKey; // Secret Key giả lập
-    private int timeStep = 30; // Thời gian TOTP
-    private int counter = 30;
-   
+     private static final int timeStep = 30;
     /**
      * Creates new form FromTOTP
      */
-    public FromTOTP(String secretKey) {
-         this.secretKey = secretKey;
-         initComponents();
-          lblTOTP.setText("Mã OTP: " + generateTOTP());
-         startCountdown();
+    public FromTOTP() {
+        initComponents();
     }
-    private String generateTOTP() {
+    
+    
+     private String generateTOTP() {
         try {
-            return Generator.generateTOTP(secretKey, timeStep);
+            return Generator.generateTOTP(timeStep);  // Tạo mã OTP
         } catch (Exception ex) {
             System.err.println("Lỗi khi tạo TOTP: " + ex.getMessage());
             return "Lỗi khi tạo OTP";
         }
     }
-    private void startCountdown() {
-        counter = 30; // Khởi tạo giá trị đếm ngược
-        Timer timer = new Timer(1000, (e) -> { // Timer chạy mỗi giây
-            if (counter == 0) {
-                counter = 30; // Reset lại bộ đếm
-                lblTOTP.setText("Mã OTP: " + generateTOTP()); // Hiển thị TOTP mới
-            }
-            lbltimer.setText("Thời gian còn lại: " + counter + " giây"); // Hiển thị thời gian
-            counter--; // Giảm bộ đếm
-        });
-        timer.setRepeats(true); // Lặp lại Timer
-        timer.start(); // Bắt đầu Timer
-    }
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,135 +37,76 @@ public class FromTOTP extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblsecretkey = new javax.swing.JLabel();
-        txtsecretkey = new javax.swing.JTextField();
-        txtTOTP = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        lblresult = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        lbltimer = new javax.swing.JLabel();
-        lblTOTP = new javax.swing.JLabel();
+        txttotp = new javax.swing.JTextField();
+        btnxacminh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblsecretkey.setText("Secret Key");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Nhập Mã TOTP");
 
-        txtsecretkey.addActionListener(new java.awt.event.ActionListener() {
+        btnxacminh.setText("Xác Minh");
+        btnxacminh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtsecretkeyActionPerformed(evt);
+                btnxacminhActionPerformed(evt);
             }
         });
-
-        jButton1.setText("Xác Minh");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        lblresult.setText("Thông báo");
-
-        jLabel1.setText("Nhập TOTP");
-
-        lbltimer.setText("Thời gian đếm ngược");
-
-        lblTOTP.setText("TOTP");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txttotp, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(138, 138, 138)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblsecretkey, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTOTP, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtsecretkey, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(239, 239, 239)
-                                .addComponent(jButton1))
-                            .addComponent(lblresult))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbltimer, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTOTP, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(79, 79, 79))))
+                        .addGap(183, 183, 183)
+                        .addComponent(btnxacminh)))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblsecretkey)
-                    .addComponent(txtsecretkey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtTOTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(21, 21, 21)
-                        .addComponent(lblresult))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblTOTP)
-                        .addGap(49, 49, 49)
-                        .addComponent(lbltimer)))
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(txttotp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(btnxacminh)
+                .addGap(16, 16, 16))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         String userInput = txtTOTP.getText();
-    try {
-        String currentOTP = Generator.generateTOTP(secretKey, 30); // Tạo OTP
+    private void btnxacminhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxacminhActionPerformed
+       String userInput = txttotp.getText();
+        
+        // Tạo mã OTP hiện tại để so sánh
+        String currentOTP = generateTOTP();
+        
+        // Kiểm tra mã OTP nhập vào có đúng không
         if (userInput.equals(currentOTP)) {
-            JOptionPane.showMessageDialog(this,"Bảo mật 2 lớp thành công!");
-            lblresult.setText("OTP chính xác!");
+            JOptionPane.showMessageDialog(this, "Xác thực 2 lớp thành công!");  // Hiển thị thông báo thành công
+            
+            // Chuyển sang form Trang Chủ
             Frm_TrangChu trangChu = new Frm_TrangChu();
             trangChu.setVisible(true);
-            this.dispose();
+            this.dispose();  // Đóng form hiện tại
         } else {
-            lblresult.setText("OTP không chính xác!");
+            JOptionPane.showMessageDialog(this, "Mã OTP không chính xác!", "Lỗi", JOptionPane.ERROR_MESSAGE);  // Thông báo lỗi
         }
-    } catch (Exception ex) {
-        lblresult.setText("Lỗi khi tạo OTP: " + ex.getMessage());
-        System.err.println("Lỗi khi tạo OTP: " + ex.getMessage()); // In lỗi ra console
-        
-
-    }
-    
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void txtsecretkeyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsecretkeyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtsecretkeyActionPerformed
+    }//GEN-LAST:event_btnxacminhActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-         try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-                javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                break;
-            }
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -213,19 +133,14 @@ public class FromTOTP extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FromTOTP("JBSWY3DPEHPK3PXP").setVisible(true);
+                new FromTOTP().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnxacminh;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblTOTP;
-    private javax.swing.JLabel lblresult;
-    private javax.swing.JLabel lblsecretkey;
-    private javax.swing.JLabel lbltimer;
-    private javax.swing.JTextField txtTOTP;
-    private javax.swing.JTextField txtsecretkey;
+    private javax.swing.JTextField txttotp;
     // End of variables declaration//GEN-END:variables
 }

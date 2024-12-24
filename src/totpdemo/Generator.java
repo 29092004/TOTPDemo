@@ -12,12 +12,13 @@ import java.util.Base64;
  * @author admin
  */
 public class Generator {
-     public static String generateTOTP(String secretKey, int timeStep) {
+     public static String generateTOTP( int timeStep) {
         try {
             // Đặt số giây hiện tại từ Unix epoch (1970-01-01)
             long currentTime = Instant.now().getEpochSecond() / timeStep;
             
             // Chuyển đổi Secret Key từ Base32
+            String secretKey = "JBSWY3DPEHPK3PXP";
             byte[] key = Base64.getDecoder().decode(secretKey);
             
             // Cấu hình HMAC-SHA1

@@ -4,18 +4,16 @@
  */
 package totpdemo;
 
-import javax.swing.JOptionPane;
-
 /**
  *
- * @author Acer
+ * @author admin
  */
-public class frm_SecretKey extends javax.swing.JFrame {
+public class Frm_ggsecretkey extends javax.swing.JFrame {
 
     /**
-     * Creates new form frm_SecretKey
+     * Creates new form Frm_ggsecretkey
      */
-    public frm_SecretKey() {
+    public Frm_ggsecretkey() {
         initComponents();
     }
 
@@ -28,18 +26,21 @@ public class frm_SecretKey extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtSecretKey = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        btntieptuc = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtsecretekey = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setText("Secret key");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Mã SecretKey");
 
-        btntieptuc.setText("Tiếp Tục");
-        btntieptuc.addActionListener(new java.awt.event.ActionListener() {
+        txtsecretekey.setText("JBSWY3DPEHPK3PXP");
+
+        jButton1.setText("Tiếp Tục");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btntieptucActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -50,50 +51,38 @@ public class frm_SecretKey extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(155, 155, 155)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(txtSecretKey, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(123, 123, 123)
+                        .addComponent(txtsecretekey, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(btntieptuc)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                        .addGap(175, 175, 175)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(txtSecretKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(btntieptuc)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtsecretekey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jButton1)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btntieptucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntieptucActionPerformed
-        String secretKey = txtSecretKey.getText();
-
-        if (secretKey.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã secretKey.");
-            return;
-        }
-
-        String correctSecretKey = "JBSWY3DPEHPK3PXP";  
-        if (!secretKey.equals(correctSecretKey)) {
-            JOptionPane.showMessageDialog(this, "Mã secretKey không đúng.");
-            return;
-        }
-
-        Frm_ggAuthenticator totpForm = new Frm_ggAuthenticator();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        FromTOTP totpForm = new FromTOTP();
         totpForm.setVisible(true);
 
         this.dispose();
-    }//GEN-LAST:event_btntieptucActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,27 +101,27 @@ public class frm_SecretKey extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frm_SecretKey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_ggsecretkey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frm_SecretKey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_ggsecretkey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frm_SecretKey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_ggsecretkey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frm_SecretKey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_ggsecretkey.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frm_SecretKey().setVisible(true);
+                new Frm_ggsecretkey().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btntieptuc;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField txtSecretKey;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField txtsecretekey;
     // End of variables declaration//GEN-END:variables
 }
