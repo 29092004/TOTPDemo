@@ -152,7 +152,11 @@ public class FromTOTP extends javax.swing.JFrame {
     try {
         String currentOTP = Generator.generateTOTP(secretKey, 30); // Tạo OTP
         if (userInput.equals(currentOTP)) {
+            JOptionPane.showMessageDialog(this,"Bảo mật 2 lớp thành công!");
             lblresult.setText("OTP chính xác!");
+            Frm_TrangChu trangChu = new Frm_TrangChu();
+            trangChu.setVisible(true);
+            this.dispose();
         } else {
             lblresult.setText("OTP không chính xác!");
         }
