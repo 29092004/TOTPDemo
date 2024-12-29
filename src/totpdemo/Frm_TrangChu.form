@@ -62,7 +62,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="B&#x1ea3;o M&#x1ead;t &#x1ee8;ng D&#x1ee5;ng"/>
+        <Property name="text" type="java.lang.String" value="B&#x1ea3;o M&#x1ead;t v&#xe0; &#x110;&#x103;ng Nh&#x1ead;p"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>

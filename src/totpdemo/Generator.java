@@ -7,6 +7,7 @@ import java.time.Instant;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
+
 /**
  *
  * @author admin
@@ -17,8 +18,8 @@ public class Generator {
             // Đặt số giây hiện tại từ Unix epoch (1970-01-01)
             long currentTime = Instant.now().getEpochSecond() / timeStep;
             
-            // Chuyển đổi Secret Key từ Base32
-            String secretKey = "JBSWY3DPEHPK3PXP";
+           
+            String secretKey = "JBSWY3DPEHPK3PXP";           
             byte[] key = Base64.getDecoder().decode(secretKey);
             
             // Cấu hình HMAC-SHA1
