@@ -13,7 +13,19 @@ import java.awt.event.ActionListener;
 public class Frm_ggAuthenticator extends javax.swing.JFrame {
     private int timeStep = 30; // Thời gian TOTP
     private int counter = 30;
-    
+    private static String currentOTP; // Biến tĩnh lưu mã OTP hiện tại
+
+private void generateAndDisplayTOTP() {
+    if (currentOTP == null || counter == 30) { // Chỉ tạo mã mới khi hết 30 giây
+        currentOTP = generateTOTP(); // Tạo mã OTP
+    }
+    lblTOTP.setText("Mã OTP: " + currentOTP);
+}
+
+public static String getCurrentOTP() {
+    return currentOTP; // Trả về mã OTP đang hiển thị
+}
+
      private Timer timer;
     /**
      * Creates new form Frm_ggAuthenticator

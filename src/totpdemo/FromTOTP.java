@@ -97,21 +97,19 @@ public class FromTOTP extends javax.swing.JFrame {
 
     private void btnxacminhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxacminhActionPerformed
        String userInput = txttotp.getText();
-        
-        // Tạo mã OTP hiện tại để so sánh
-        String currentOTP = generateTOTP();
-        
-        // Kiểm tra mã OTP nhập vào có đúng không
-        if (userInput.equals(currentOTP)) {
-            JOptionPane.showMessageDialog(this, "Xác thực 2 lớp thành công!");  // Hiển thị thông báo thành công
-            
-            // Chuyển sang form Trang Chủ
-            Frm_TrangChu trangChu = new Frm_TrangChu();
-            trangChu.setVisible(true);
-            this.dispose();  // Đóng form hiện tại
-        } else {
-            JOptionPane.showMessageDialog(this, "Mã OTP không chính xác!", "Lỗi", JOptionPane.ERROR_MESSAGE);  // Thông báo lỗi
-        }
+    
+    // Lấy mã OTP cho bước hiện tại và bước liền trước
+    String currentOTP = Generator.generateTOTP(timeStep);
+    String previousOTP = Generator.generateTOTP(timeStep - 1); // Bước thời gian liền trước
+
+    if (userInput.equals(currentOTP) || userInput.equals(previousOTP)) {
+        JOptionPane.showMessageDialog(this, "Xác thực 2 lớp thành công!");
+        Frm_TrangChu trangChu = new Frm_TrangChu();
+        trangChu.setVisible(true);
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Mã OTP không chính xác!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btnxacminhActionPerformed
 
     /**
